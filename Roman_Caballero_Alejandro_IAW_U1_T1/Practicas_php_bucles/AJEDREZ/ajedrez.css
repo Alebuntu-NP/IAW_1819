@@ -1,0 +1,68 @@
+
+/*
+ Casillas pares de filas pares 
+
+table tr:nth-child(odd) td:nth-child(odd) {
+    height: 30px;
+    width: 30px;
+    background-color:green ;
+
+
+}
+ Casillas impares de filas pares 
+
+table tr:nth-child(odd) td:nth-child(even) {
+    height: 30px;
+    width: 30px;
+    background-color: green;
+
+}
+ Casillas impares de filas impares 
+
+table tr:nth-child(even) td:nth-child(even) {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+
+
+}
+ Casillas pares de filas impares 
+table tr:nth-child(even) td:nth-child(odd) {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+
+
+}
+*/
+/* Css de la tabla en general */
+table {
+border-collapse:collapse;
+
+}
+
+
+.roja {
+ 
+height: 50px;
+width: 50px;
+background-color: red;
+ 
+
+}
+
+.negra {
+height:50px;
+width: 50px;
+background-color: black;
+
+}
+
+
+
+
+td {
+   border: 1px solid black;
+height:50px;
+width: 50px;
+}
