@@ -10,7 +10,7 @@
 <body>
 
 
-<?php if (!isset($_POST["start"])) : ?>
+<?php if (!isset($_POST["start"])): ?>
   <form method="post">
     <fieldset>
       <legend>PRIMERO</legend>
@@ -34,48 +34,52 @@
     <input type="submit" name="start" value="MATRICULAR" id="ola">
 
  </form>
- 
+
 
 
 <?php else: ?>
 
   <?php
 
-
-
-  if (isset($_POST["asignaturas1"])) {
-  echo "<h1>PRIMERO</h1>";
-
-  echo "<ul>";
-for ($i=0; $i < sizeof($_POST["asignaturas1"]) ; $i++) { 
-    echo "<li>" . $_POST["asignaturas1"][$i] . "</li>";
-    var_dump($_POST["asignaturas1"]);
-
-}
-
-echo "</ul>";
+if (in_array("GBD", $_POST["asignaturas1"]) && in_array("AGBD", $_POST["asignaturas2"])) {
+    echo "<h1>NO ES POSIBLE MATRICULARSE DE GBD Y AGBD A LA VEZ</h1>";
+} elseif (in_array("PAR", $_POST["asignaturas1"]) && in_array("SRI", $_POST["asignaturas2"])) {
+    echo "<h1>NO ES POSIBLE MATRICULARSE DE PAR Y SRI A LA VEZ</h1>";
+} elseif (in_array("ISO", $_POST["asignaturas1"]) && in_array("ASO", $_POST["asignaturas2"])) {
+    echo "<h1>NO ES POSIBLE MATRICULARSE DE ISO Y ASO A LA VEZ</h1>";
 } else {
+    if (isset($_POST["asignaturas1"])) {
+        echo "<h1>PRIMERO</h1>";
 
-    echo "<h1>No tiene ninguna de primero</h1>";
+        echo "<ul>";
+        for ($i = 0; $i < sizeof($_POST["asignaturas1"]); $i++) {
+            echo "<li>" . $_POST["asignaturas1"][$i] . "</li>";
 
+        }
+
+        echo "</ul>";
+    } else {
+
+        echo "<h1>No tiene ninguna de primero</h1>";
+
+    }
+    if (isset($_POST["asignaturas2"])) {
+
+        echo "<h1>SEGUNDO</h1>";
+        echo "<ul>";
+
+        for ($k = 0; $k < sizeof($_POST["asignaturas2"]); $k++) {
+            echo "<li>" . $_POST["asignaturas2"][$k] . "</li>";
+        }
+        echo "</ul>";
+    } else {
+
+        echo "<h1>No tiene ninguna de segundo</h1>";
+    }
 }
-if (isset($_POST["asignaturas2"])) {
 
-echo "<h1>SEGUNDO</h1>";
-echo "<ul>";
-
-for ($k=0; $k < sizeof($_POST["asignaturas2"]) ; $k++) { 
-    echo "<li>" . $_POST["asignaturas2"][$k] . "</li>";
-}
-echo "</ul>";
-} else {
-
-    echo "<h1>No tiene ninguna de segundo</h1>";
- }
-
-
-  ?>
-<?php endif ?>
+?>
+<?php endif?>
 
 
 </body>
