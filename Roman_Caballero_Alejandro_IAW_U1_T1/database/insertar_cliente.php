@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
 <body>
 
-<?php if (!isset($_POST["ciudad"])): ?>
+<?php if (!isset($_POST["cod"])): ?>
 
 <form method="post">
-<fieldset>
- <span>Ciudad: <input type="text" name="ciudad" required></span>
 
+CodClient: <input type="text" name="cod" required>
+Nombre: <input type="text" name="nom" required>
+Apellidos: <input type="text" name="ap" required>
+Direccion: <input type="text" name="dir" required>
+Telefono: <input type="text" name="tef" required>
+DNI: <input type="text" name="dni" required>
+<input type="submit" value="Insertar">
 
-<input type="submit" value="Buscar">
-</fieldset>
 </form>
 <?php else: ?>
 
@@ -36,39 +37,24 @@ if ($connection->connect_errno) {
 
 //MAKING A SELECT QUERY
 /* Consultas de selección que devuelven un conjunto de resultados */
-$query = "select * from clientes where direccion like '%".$_POST['ciudad']."'";
+$query = "insert into clientes (CodCliente,Nombre,Apellidos,DNI,Direccion,Telefono) values ('".$_POST['cod']."','".$_POST['dni']."','".$_POST['ap']."','".$_POST['nom']."','".$_POST['dir']."','".$_POST['tef']."');";
 if ($result = $connection->query($query)) {
 
 if ($result->num_rows==0){
-           echo "ola";
-}
+    echo "<h1>Cliente insertado correctamente</h1>";
+        }
 else {
+    echo "Ya existe un cliente con esa clave";
 
-echo '<ul>';
-while($obj = $result->fetch_object()) {
-
-  echo "<li>";
-  echo "Codigo:" .$obj->CodCliente;
-  echo "Nombre:" .$obj->Nombre;
-  echo "Apellidos:" .$obj->Apellidos;
-  echo "DNI:" .$obj->DNI;
-  echo "Direccion:" .$obj->Direccion;
-  
-  echo "Telefono:" .$obj->Telefono;
-
-  echo "</li>";
-}
-
-echo "</ul>";
-  
 }
 
 } else { 
-    echo "Error en consulta";
+    echo "<h1>Error en consulta</h1>";
 }
 
+
+
 $result->close();
-unset($obj);
 unset($connection);
 
 ?>
