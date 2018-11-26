@@ -26,7 +26,9 @@
 
       //MAKING A SELECT QUERY
       /* Consultas de selección que devuelven un conjunto de resultados */
-      if ($result = $connection->query("select * from vehiculos;")) {
+
+      $query = "select * from vehiculos v join reparaciones rep on v.matricula = rep.matricula ;";
+      if ($result = $connection->query($query)) {
 
           printf("<p>The select query returned %d rows.</p>", $result->num_rows);
 
@@ -37,11 +39,14 @@
           <thead>
             <tr>
               <th>Matricula</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Color</th>
-              <th>FechaMatriculacion</th>
-              <th>CodCliente</th>
+              <th>IdReparacion</th>
+              <th>FechaEntranda</th>
+              <th>Km</th>
+              <th>Averia</th>
+              <th>FechaSalida</th>
+              <th>Reparado</th>
+              <th>Observaciones</th>
+            </tr>
           </thead>
 
       <?php
@@ -51,13 +56,14 @@
           while($obj = $result->fetch_object()) {
               //PRINTING EACH ROW
               echo "<tr>";
-          
-              echo "<td><a href='coste_piezas.php?codc=$obj->Matricula'>".$obj->Matricula."</a></td>";
-              echo "<td>".$obj->Marca."</td>";
-              echo "<td>".$obj->Modelo."</td>";
-              echo "<td>".$obj->Color."</td>";
-              echo "<td>".$obj->FechaMatriculacion."</td>";
-              echo "<td><a>".$obj->CodCliente."</a></td>";
+              echo "<td><a href='coste_piezas.php?codm=$obj->Matricula&cmo=$obj->Modelo&cma=$obj->Marca'>".$obj->Matricula."</a></td>";
+              echo "<td>".$obj->IdReparacion."</td>";
+              echo "<td>".$obj->FechaEntrada."</td>";
+              echo "<td>".$obj->Km."</td>";
+              echo "<td>".$obj->Averia."</td>";
+              echo "<td>".$obj->FechaSalida."</td>";   
+              echo "<td>".$obj->Reparado."</td>";  
+              echo "<td>".$obj->Observaciones."</td>";
               echo "</tr>";
           }
 
