@@ -30,13 +30,14 @@ if ($result = $connection->query($query)) {
 
 
 echo "<form method='post'>";
+echo "<legend>REGISTRO</legend>";
 echo "<fieldset>";
-echo "<span>CodCliente: <input type='text' name='codcl'  value='$obj->CodCliente' required></span>";
-echo "<span>DNI: <input type='text' name='dni' value='$obj->DNI' required></span>";
-echo "<span>Nombre: <input type='text' name='nom' value='$obj->Nombre' required></span>";
-echo "<span>Apellidos: <input type='text' name='ap' value='$obj->Apellidos' required></span>";
-echo "<span>Direccion: <input type='text' name='dir' value='$obj->Direccion' required></span>";
-echo "<span>Telefono: <input type='text' name='tef' value='$obj->Telefono'required></span>";
+echo "<p>CodCliente <input type='text' name='codcl'  value='$obj->CodCliente' required></p>";
+echo "<p>DNI: <input type='text' name='dni' value='$obj->DNI' required></p>";
+echo "<p>Nombre: <input type='text' name='nom' value='$obj->Nombre' required></p>";
+echo "<p>Apellidos: <input type='text' name='ap' value='$obj->Apellidos' required></p>";
+echo "<p>Direccion: <input type='text' name='dir' value='$obj->Direccion' required></p>";
+echo "<p>Telefono: <input type='text' name='tef' value='$obj->Telefono'required></p>";
 echo "<input type='submit' value='Actualizar'>";
 echo "</fieldset>";
 echo "</form>";
