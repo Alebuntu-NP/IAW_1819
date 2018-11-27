@@ -36,7 +36,7 @@ echo "<span>DNI: <input type='text' name='dni' value='$obj->DNI' required></span
 echo "<span>Nombre: <input type='text' name='nom' value='$obj->Nombre' required></span>";
 echo "<span>Apellidos: <input type='text' name='ap' value='$obj->Apellidos' required></span>";
 echo "<span>Direccion: <input type='text' name='dir' value='$obj->Direccion' required></span>";
-echo "<span>Telefono: <input type='stext' name='tef' value='$obj->Telefono'required></span>";
+echo "<span>Telefono: <input type='text' name='tef' value='$obj->Telefono'required></span>";
 echo "<input type='submit' value='Actualizar'>";
 echo "</fieldset>";
 echo "</form>";
