@@ -75,7 +75,7 @@ set CodCliente = '".$_POST['codcl']."',
     Nombre = '".$_POST['nom']."',
     Apellidos = '".$_POST['ap']."',
     Direccion = '".$_POST['dir']."',
-    Telefono = '".$_POST['tef']."' where CodCliente = '".$_POST['codcl']."'";
+    Telefono = '".$_POST['tef']."' where CodCliente = '".$_GET['codc']."'";
 if ($result = $connection->query($query)) {
 
     header('Location:clientes.php');
