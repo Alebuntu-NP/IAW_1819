@@ -11,30 +11,26 @@
 
 <?php
 echo "<table>";
-$num=0;
-
-for ($i=0;$i<=100;$i++) 
+echo "<thead><th>Pares</th><th>Impares</th><thead>";
+for ($num=0;$num<100;$num++) 
 {
 
 if ($num%2==0)
 {
-echo "<tr>";
-echo "<td>"."El numero $num es par"."</td>" ;
-echo "</tr>";
+echo "<tr><td>"."El número $num es par"."</td>";
 }
 else
 {
-echo "<tr>";
-echo "<td>"."El numero $num es impar"."</td>" ;
-echo "</tr>";
+echo "<td>"."El número $num es impar"."</td></tr>";
 }
 
-$num = $num + 1;
-
 }
+
 
 echo "</table>";
 ?>
+
+
 </body>
 </html>
 
