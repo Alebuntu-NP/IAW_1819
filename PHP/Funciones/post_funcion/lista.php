@@ -10,28 +10,29 @@
     <?php
 function mostrar_lista($v) 
 {
-$lista = "<ul>"; 
+    $lista = "<ul>"; 
 
 
-for ($num=0 ; $num < ($_POST["cantidad"]*2); $num++ ) { 
+    for ($num=0 ; $num < ($v*2); $num++ ) { 
     
-    if ($num%2==0)
-    {
+     if ($num%2==0)
+     {
 
-    $lista= $lista."<li>".$num."</li>";
+        $lista= $lista."<li>".$num."</li>";
 
-    }
+     }
 
 
    
-}
+    }
 $lista=$lista."</ul>";
 return $lista;
 
 }
 
 if ($_POST == NULL) {
-    echo "<h1>No hay datos insertados en el POST</h1>";
+    header("Location: form.php");
+
 } else {
 
 echo mostrar_lista($_POST["cantidad"]);
