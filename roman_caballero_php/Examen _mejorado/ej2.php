@@ -15,22 +15,14 @@
    var_dump($vector);
 function cambiar($v){
 
-$key=[];
-$valor=[];
-    foreach ($v as $k => $value) {
-
-
-    $key=$k;
-    $valor=$value;
-
-    $k = $valor;
-    $value=$key;
-    }
+foreach ($vector as $key => $value) {
     
+
+
+}
      
 }
-$vector=cambiar($vector);
-   var_dump($vector);
+
 
 ?>
 
