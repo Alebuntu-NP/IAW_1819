@@ -10,8 +10,9 @@
 </head>
 <body>
 
-<?php if (!isset($_POST["nombre"])): ?>
+<?php if (!isset($_POST["boton"])): ?>
 <?php
+echo "<form method='post'>";
 
 //CREATING THE CONNECTION
 $connection = new mysqli("localhost", "tf", "123456", "tf");
@@ -24,20 +25,18 @@ if ($connection->connect_errno) {
 //MAKING A SELECT QUERY
 /* Consultas de selección que devuelven un conjunto de resultados */
 $query = "select * from recambios";
-
+$num=0;
 if ($result = $connection->query($query)) {
     while($obj = $result->fetch_object()) {
 
 
-echo "<form method='post'>";
-
-echo "<p>$obj->IdRecambio: <input type='text' name='codcl'  value='' required></p>";
+$num=$num+1;
+echo "<p>$obj->IdRecambio: <input type='text' name='$num'  value='' ></p>";
 
 echo "</fieldset>";
-echo "</form>";
 
     }
-    echo "<input type='submit' value='Actualizar'>";
+    echo "<input type='submit' value='Actualizar' name='boton'>";
 } 
 else { 
     echo "Error en consulta";
@@ -46,13 +45,15 @@ else {
 $result->close();
 unset($obj);
 unset($connection);
+echo "</form>";
+echo var_dump($_POST);
 
 ?>
 
 <?php else: ?>
-
-
-
+<?php
+echo var_dump($_POST);
+?>
 <?php endif?>
 </body>
 </html>
