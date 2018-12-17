@@ -30,7 +30,7 @@ $vector=["A"=>"B","C"=>"D","E"=>"F","G"=>"H"];
 
 
 $otrovector=cambiar($vector);
-echo var_dump($otrovector);
+var_dump($otrovector);
 ?>
     
 </body>
