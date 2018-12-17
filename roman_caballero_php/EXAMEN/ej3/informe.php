@@ -29,11 +29,9 @@ if ($_GET != null) {
     //MAKING A SELECT QUERY
     /* Consultas de selección que devuelven un conjunto de resultados */
     $query="select  rem.Descripcion,i.IdRecambio, sum(i.Unidades) as Total from incluyen i join recambios rem on i.IdRecambio=rem.IdRecambio where i.IdRecambio = '$_GET[cod]'";
-    echo $query;
     if ($result = $connection->query($query)) {
     
-        printf("<p>The select query returned %d rows.</p>", $result->num_rows);
-     
+        
    
    
         ?>
@@ -42,28 +40,32 @@ if ($_GET != null) {
 
 
         <!-- PRINT THE TABLE AND THE HEADER -->
-        <table style="border:1px solid black">
-        <thead>
-          <tr>
-            <th>IdRecambio</th>
-            <th>Descripcion</th>
-            <th>Total</th>
-           </tr>
-        </thead>
+        
     
     <?php
-    
+    echo "<table>";
         //FETCHING OBJECTS FROM THE RESULT SET
         //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
         while($obj = $result->fetch_object()) {
+            if ($obj->Total==0) {
+                echo "No se ha utilizado el recambio";
+            } else {
+                printf("<p>The select query returned %d rows.</p>", $result->num_rows);
+                echo "<th>IdRecambio</th>";
+                echo "<th>Descripcion</th>";
+                echo "<th>Total Unidades</th>";
+                echo "<tr>";
+                echo "<td>".$obj->IdRecambio."</td>";
+                echo "<td>".$obj->Descripcion."</td>";
+                echo "<td>".$obj->Total."</td>";
+                echo "</tr>";
+                
+            }
+            
             //PRINTING EACH ROW
-            echo "<tr>";
-            echo "<td>".$obj->IdRecambio."</td>";
-            echo "<td>".$obj->Descripcion."</td>";
-            echo "<td>".$obj->Total."</td>";
-            echo "</tr>";
+            
         }
-    
+    echo "</table>";
         //Free the result. Avoid High Memory Usages
         $result->close();
         unset($obj);
