@@ -21,7 +21,7 @@ foreach ($vector as $key => $value) {
 
 
 }
-echo "<input type='submit' values=$cadena></input>";
+echo "<input type='submit' value=$cadena></input>";
 echo "</form>";
 }
 
