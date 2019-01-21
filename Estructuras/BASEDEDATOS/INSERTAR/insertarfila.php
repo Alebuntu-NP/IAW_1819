@@ -47,7 +47,7 @@
 
     
                 echo "<h1>Cliente insertado correctamente</h1>";
-        
+                header('Location:insertarfila.php');
         
         } 
         else { 
